@@ -3,6 +3,8 @@ Hospital Helper finds the closest hospital to any given point in the United Stat
 
 <h2> About Each File </h2>
 
+//Need to add rest of description here
+
 ### Step 1: Create Your Project Repository
 
 This is a template repository. If you want to know more about those, feel free to follow [this link](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-template-repository) to the GitHub documenation about templates and how to create them. You've used templates before for projects 1 and 2, and you will use it now, too. 
