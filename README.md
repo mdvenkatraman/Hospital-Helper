@@ -1,46 +1,7 @@
-<H1> COP3530 - Project 2 </h1>
-This is the template for Project 2 repositories. It includes all the assignment instructions and documentation to help you use GitHub.
+<H1> Hospital Helper </h1>
+Hospital Helper finds the closest hospital to any given point in the United States using latitude and longitude coordinates, implemented via R Tree, KD Tree, and brute force algorithms.
 
-<h2> Table of Contents </h2>
-
-- [Documentation and resources on how to use GitHub for Project 2](#documentation-and-resources-on-how-to-use-github-for-project-3)
-	- [Getting Started with the Project](#getting-started-with-the-project)
-		- [Step 1: Create Your Project Repository](#step-1-create-your-project-repository)
-		- [Step 2: Repository Name and Visibility](#step-2-repository-name-and-visibility)
-		- [Step 3: Collaboration and Team Members](#step-3-collaboration-and-team-members)
-		- [Step 4: Development](#step-4-development)
-			- [Issues:](#issues)
-			- [Branches](#branches)
-			- [Commits](#commits)
-				- [Guidelines for good commit messages](#guidelines-for-good-commit-messages)
-			- [Pull Requests](#pull-requests)
-	- [Markdown and README](#markdown-and-readme)
-	- [Additional Resources and Documentation:](#additional-resources-and-documentation)
-		- [General Documentation](#general-documentation)
-		- [Additional Specific Documentation](#additional-specific-documentation)
-			- [Quickstart](#quickstart)
-			- [Repositories](#repositories)
-			- [Branches](#branches-1)
-			- [Issues](#issues-1)
-			- [Bonus Documentation](#bonus-documentation)
-
-# Documentation and resources on how to use GitHub for Project 2
-## Getting Started with the Project
-
-This is a group project. As such, you're expected to equally contribute to all parts of the project. To ensure everyone is contributing, we have moved this project entirely to GitHub and will use GitHub logs to understand your contributions. To fully leverage the features that GitHub offers, you have to be familiar with what they are and how to use them.
-
-The goal of this project is to get you familiar with the creative process of software development for a general purpose use and how to use data structures or algorithms for those applications. To go with the professional development that the project offers in terms of general use application, you will also get more familiar with version control and GitHub platform to facilitate the collaborative work with extensive planning and organization abilities.
-
-This step-by-step process is linked in this video **if you aren't familiar with GitHub**:
-- [Introduction to GitHub - General GitHub Features](https://youtu.be/SoEPYV6Nrxo) - Has chapters and closed-captions
-
-The following video has instructions on local development using Git and GitHub:
-- [Local Development with Git and GitHub](https://youtu.be/9MPMu8qBfPo) - Has chapters and closed-captions
-
-To illustrate the development process, we've also made a demo video to show how the GitHub flow looks like on an example:
-- [Mastering GitHub Workflow](https://youtu.be/PbTdROv0TJw) - Has chapters and closed-captions
-
-Here are the instructions on how to Collaborate for project 2 which are similar to what was covered in the Introduction to GitHub video. You may skip reading these if you have watched that video:
+<h2> About Each File </h2>
 
 ### Step 1: Create Your Project Repository
 
