@@ -17,3 +17,4 @@ struct Node {
     std::vector<Node*> children; //children of the node, used for internal nodes
     std::vector<Hospital> points; //points of the node, used for leaf nodes
 };
+
