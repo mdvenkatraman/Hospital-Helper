@@ -55,7 +55,6 @@ struct Rect
         } else if (lon > maxLon) {
             dLon = lon - maxLon;
         }
-
         return dLat * dLat + dLon * dLon;
     }
 };
