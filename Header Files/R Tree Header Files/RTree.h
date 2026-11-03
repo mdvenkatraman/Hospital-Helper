@@ -16,6 +16,7 @@ struct Node {
 
 class RTree {
     private:
+        static constexpr std::size_t M = 16; //max entries per node
         Node* root;
         void destroy(Node* n);
         void search (const Node* n, double lat, double lon, const Hospital*& best, double& bestSq) const;
@@ -26,7 +27,8 @@ class RTree {
         ~RTree();
 
         void build(std::vector<Hospital> pts);
-        
+
+
         //returns a pointer to the nearest hospital
         const Hospital* nearest (double lat, double lon) const;
 };
