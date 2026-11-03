@@ -1,0 +1,12 @@
+cmake_minimum_required(VERSION 3.14)
+project(Hospital Helper CXX)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+include_directories(
+    "Header Files"
+    "Header Files/R Tree Header Files"
+    )
+
+add_executable(app main.cpp RTree.cpp)
