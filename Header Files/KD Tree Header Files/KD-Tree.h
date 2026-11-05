@@ -14,7 +14,7 @@ struct KDNode{ // a node of the KD-tree where each node contains one hospital
 
 class KD_Tree{
     private:
-    KDNode* root;
+    KDNode* root; 
     std::size_t count; //number of hospitals
 
     KDNode* build(std:: vector<Hospital>& pts, std::size_t fi, std:: size_t la, int depth); // builds the tree from pts[fi, la) 
@@ -24,6 +24,7 @@ class KD_Tree{
     // recursive search for nearest neighbour and updating the nearest and best variables
     public: 
         KD_Tree();
+        ~KD_Tree();
         void build(std::vector<Hospital> pts);
 
         const Hospital* nearest(double latitude, double longitude) const;
