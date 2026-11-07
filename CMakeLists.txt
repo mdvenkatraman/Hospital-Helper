@@ -7,6 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 include_directories(
     "Header Files"
     "Header Files/R Tree Header Files"
+    "Header Files/KD Tree Header Files"
     )
 
-add_executable(app main.cpp RTree.cpp)
+add_executable(app main.cpp RTree.cpp "Header Files/KD Tree Header Files/KD-Tree.cpp")
