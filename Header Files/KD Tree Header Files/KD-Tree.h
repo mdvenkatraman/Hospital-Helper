@@ -17,7 +17,7 @@ class KD_Tree{
     KDNode* root; 
     std::size_t count; //number of hospitals
 
-    KDNode* build(std:: vector<Hospital>& pts, std::size_t fi, std:: size_t la, int depth); // builds the tree from pts[fi, la) 
+    KDNode* build_tree(std:: vector<Hospital>& pts, std::size_t fi, std:: size_t la, int depth); // builds a balanced tree from pts[fi, la) 
     // returns the root
 
     void search(const KDNode* n, double latitude, double longitude, const Hospital*& nearest, double& best) const;
@@ -25,7 +25,7 @@ class KD_Tree{
     public: 
         KD_Tree();
         ~KD_Tree();
-        void build(std::vector<Hospital> pts);
+        void build(std::vector<Hospital> pts); //builds the tree from scratch removing whatever is already there
 
         const Hospital* nearest(double latitude, double longitude) const;
 };
