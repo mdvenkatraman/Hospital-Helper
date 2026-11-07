@@ -4,7 +4,7 @@
 
 KD_Tree::KD_Tree() : root(nullptr), count(0) {}
 
-KD_Tree:: ~KD-Tree() {
+KD_Tree:: ~KD_Tree() {
     destroy(root);
 }
 void KD_Tree:: build(std::vector<Hospital> pts){
@@ -14,7 +14,7 @@ void KD_Tree:: build(std::vector<Hospital> pts){
     root = build_tree(pts, 0, pts.size(), 0);
 }
 
-KDNode* KD_Tree::build_tree(std::vector<Hospital>& pts, std::size_t fi, std::size_t la. int depth) {
+KDNode* KD_Tree::build_tree(std::vector<Hospital>& pts, std::size_t fi, std::size_t la, int depth) {
     if (fi>= la){
         return nullptr; //no hospitals 
     }
@@ -32,10 +32,10 @@ KDNode* KD_Tree::build_tree(std::vector<Hospital>& pts, std::size_t fi, std::siz
 }
 
 
-void KD_Tree:: search(const KDNode* n, double latitude, double longitude, const Hospital*& nearest, double best) const {
+void KD_Tree:: search(const KDNode* n, double latitude, double longitude, const Hospital*& nearest, double& best) const {
     if (n ==nullptr) return;
 
-    double difference_latitude = n->hospital.latitude = latitude;
+    double difference_latitude = n->hospital.latitude - latitude;
     double difference_longitude = n->hospital.longitude - longitude;
     double distance = difference_latitude*difference_latitude + difference_longitude* difference_longitude;
     if (distance <best){
@@ -46,14 +46,14 @@ void KD_Tree:: search(const KDNode* n, double latitude, double longitude, const 
     //checking the axis to decide what coordinate matters at the node
     double query_val;
     if (n->axis == 0){
-        query_value = latitude;
+        query_val = latitude;
 
     }
     else{
-        query_value = longitude;
+        query_val = longitude;
     }
 
-    double diff = query_value - coord(n->hospital, n->axis);
+    double diff = query_val - coord(n->hospital, n->axis);
     const KDNode* near_side;
     const KDNode* far_side;
     if (diff <0){
@@ -62,19 +62,20 @@ void KD_Tree:: search(const KDNode* n, double latitude, double longitude, const 
     } else{
         near_side = n->right; //query is bigger or equal so its on right
         far_side = n->left;
-        search(near_side, latitude, longitude, nearest,best);
-        if (diff*diff < best){
-            search(far_side, latitude, longitude, nearest, best);
-        }
     }
+    search(near_side, latitude, longitude, nearest,best);
+    if (diff*diff < best){
+        search(far_side, latitude, longitude, nearest, best);
+        }
+    
 
 
 }
-const Hospital* KD_Tree:nearest(double latitude, double longitude) const {
+const Hospital* KD_Tree::nearest(double latitude, double longitude) const {
     const Hospital* nearest = nullptr;
     double best = std::numeric_limits<double>::max();
     search(root, latitude, longitude, nearest, best);
-    return best;
+    return nearest;
 }
 std::size_t KD_Tree::size() const {
     return count;
@@ -97,7 +98,7 @@ void KD_Tree::selectMedian(std::vector<Hospital>& pts, std::size_t fi, std::size
 
     }
 }
-std::size_t KD_Tree::partition(std::vector<Hospital>& pts, std::size_t lo, std::size_t hi, int axis){
+std::size_t KD_Tree::partition(std::vector<Hospital>& pts, std::size_t fi, std::size_t la, int axis){
     std::size_t mid = fi+ (fi-la) /2; // considering mid as pivot for now
     std::swap (pts[mid], pts[la-1]); // moving the mid element at the end
 
