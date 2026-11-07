@@ -31,6 +31,7 @@ KDNode* KD_Tree::build_tree(std::vector<Hospital>& pts, std::size_t fi, std::siz
 
 }
 
+
 void KD_Tree:: search(const KDNode* n, double latitude, double longitude, const Hospital*& nearest, double best) const {
     if (n ==nullptr) return;
 
@@ -69,7 +70,23 @@ void KD_Tree:: search(const KDNode* n, double latitude, double longitude, const 
 
 
 }
+const Hospital* KD_Tree:nearest(double latitude, double longitude) const {
+    const Hospital* nearest = nullptr;
+    double best = std::numeric_limits<double>::max();
+    search(root, latitude, longitude, nearest, best);
+    return best;
+}
+std::size_t KD_Tree::size() const {
+    return count;
+}
+int KD_Tree::height_node(const KDNode* n) const {
+    if (n == nullptr) return 0;
+    return 1+ std::max(height_node(n->left), height_node(n->right));
 
+}
+int KD_Tree:: height() const {
+    return height_node(root);
+}
 
 void KD_Tree::selectMedian(std::vector<Hospital>& pts, std::size_t fi, std::size_t la, std::size_t k, int axis){
     while (fi-la >1) {
