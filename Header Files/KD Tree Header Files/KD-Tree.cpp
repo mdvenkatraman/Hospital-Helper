@@ -1,7 +1,7 @@
 #include "KD-Tree.h"
 #include <algorithm>
 #include <limits>
-
+#include <utility>
 KD_Tree::KD_Tree() : root(nullptr), count(0) {}
 
 KD_Tree:: ~KD_Tree() {
@@ -90,7 +90,7 @@ int KD_Tree:: height() const {
 }
 
 void KD_Tree::selectMedian(std::vector<Hospital>& pts, std::size_t fi, std::size_t la, std::size_t k, int axis){
-    while (fi-la >1) {
+    while (la - fi >1) {
         std::size_t p = partition (pts, fi, la, axis); //splits the vector into two sides around middle
         if (p == k)return; //index k is the target postion 
         if (k<p) la = p; 
@@ -99,12 +99,12 @@ void KD_Tree::selectMedian(std::vector<Hospital>& pts, std::size_t fi, std::size
     }
 }
 std::size_t KD_Tree::partition(std::vector<Hospital>& pts, std::size_t fi, std::size_t la, int axis){
-    std::size_t mid = fi+ (fi-la) /2; // considering mid as pivot for now
+    std::size_t mid = fi+ (la - fi) /2; // considering mid as pivot for now
     std::swap (pts[mid], pts[la-1]); // moving the mid element at the end
 
     double pivotVal = coord(pts[la-1], axis);
 
-    std::size_t store = lo;
+    std::size_t store = fi;
     // this loop will move everything smaller than the pivot to the front
     for (std::size_t i = fi; i<la -1; i++){
         if (coord(pts[i], axis)< pivotVal){
@@ -112,10 +112,21 @@ std::size_t KD_Tree::partition(std::vector<Hospital>& pts, std::size_t fi, std::
             store++;
         }
     }
-    std:: swap(pts[store, pts[la-1]]); //puts the pivot right after the smaller element
-   
+    std:: swap(pts[store], pts[la-1]); //puts the pivot right after the smaller element
+
     return store;
 
 }
 
 
+void KD_Tree::destroy(KDNode* n) {
+    if (n == nullptr) return;
+    destroy(n->left);
+    destroy(n->right);
+    delete n;
+}
+
+double KD_Tree::coord(const Hospital& h, int axis) {
+    if (axis == 0) return h.latitude;
+    return h.longitude;
+}
