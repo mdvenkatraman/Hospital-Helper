@@ -140,3 +140,29 @@ std::vector<Query> load_queries(const std::string& path){
     return queries;
 }
 
+int main() {
+    const auto hospitals = load_hospitals("Structures_Medical_Emergency_Response_v1_3359501503281473884.csv");
+    if (hospitals.empty()) {                       
+        std::cout << "No hospitals loaded.\n";
+        return 1;
+    }
+    const auto queries = load_queries("USA_Block_Groups_v1_-2119205518973722401.csv");
+    std::cout <<"Hospitals loaded: " <<hospitals.size() << "\n";
+    std::cout << "Block groups loaded: " << queries.size() << "\n";
+    KD_Tree kd;
+    kd.build(hospitals);
+    RTree rt;
+    rt.build(hospitals);
+    
+    // an example: Gainesville, Fl
+    const double lat = 29.65, lon = -82.32;
+        const Hospital* a = kd.nearest(lat, lon);
+        const Hospital* b = rt.nearest(lat, lon);
+        const Hospital* c = BruteForce::findNearest(hospitals, lat, lon);
+
+    std::cout << "k-d tree:    " << a->name << "\n";
+std::cout << "R-tree:      " << b->name << "\n";
+std::cout << "Brute force: " << c->name << "\n";
+
+return 0;
+}
