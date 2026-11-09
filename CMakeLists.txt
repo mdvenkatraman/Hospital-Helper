@@ -10,4 +10,4 @@ include_directories(
     "Header Files/KD Tree Header Files"
     )
 
-add_executable(app main.cpp RTree.cpp "Header Files/KD Tree Header Files/KD-Tree.cpp" parser.cpp tests.cpp)
+add_executable(app main.cpp RTree.cpp KD-Tree.cpp parser.cpp tests.cpp)
