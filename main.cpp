@@ -165,4 +165,24 @@ std::cout << "R-tree:      " << b->name << "\n";
 std::cout << "Brute force: " << c->name << "\n";
 
 return 0;
+
+while (true) {
+    std::cout << "\n1. Find nearest hospital\n"
+              << "2. Run benchmark\n"
+              << "3. Exit\n"
+              << "Choice: ";
+
+    std::string choice;
+    if (!std::getline(std::cin, choice) || choice == "3") {
+        break;
+    }
+
+    if (choice == "1") {
+        std::cout << "Find nearest is coming next.\n";
+    } else if (choice == "2") {
+        std::cout << "Benchmark is coming later.\n";
+    } else {
+        std::cout << "Enter 1, 2, or 3.\n";
+    }
+}
 }
