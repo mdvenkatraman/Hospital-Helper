@@ -15,7 +15,7 @@ set(HED_DIRS
 add_executable(HospitalHelper
     main.cpp
     RTree.cpp
-    "Header Files/KD Tree Header Files/KD-Tree.cpp"
+    KD-Tree.cpp
     parser.cpp
 )
 
