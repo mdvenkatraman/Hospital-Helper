@@ -16,7 +16,7 @@ add_executable(HospitalHelper
     main.cpp
     RTree.cpp
     KD-Tree.cpp
-    parser.cpp
+    Parser.cpp
 )
 
 target_include_directories(HospitalHelper PRIVATE ${HED_DIRS})
