@@ -164,8 +164,6 @@ int main() {
 std::cout << "R-tree:      " << b->name << "\n";
 std::cout << "Brute force: " << c->name << "\n";
 
-return 0;
-
 while (true) {
     std::cout << "\n1. Find nearest hospital\n"
               << "2. Run benchmark\n"
